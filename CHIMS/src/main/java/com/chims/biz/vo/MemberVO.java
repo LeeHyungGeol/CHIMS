@@ -5,16 +5,14 @@ public class MemberVO {
 	private String member_id;
 	private String member_pwd;
 	private String member_name;
-	private int member_role;
+	/**
+	 * @description
+	 * member_role : "member", "admin"
+	 */
+	private String member_role;
 	private int dept_no;
-	
-	public MemberVO() {
-	}
 
-	@Override
-	public String toString() {
-		return "MemberVO [member_id=" + member_id + ", member_pwd=" + member_pwd + ", member_name=" + member_name
-				+ ", member_role=" + member_role + ", dept_no=" + dept_no + "]";
+	public MemberVO() {
 	}
 
 	public String getMember_id() {
@@ -41,11 +39,11 @@ public class MemberVO {
 		this.member_name = member_name;
 	}
 
-	public int getMember_role() {
+	public String getMember_role() {
 		return member_role;
 	}
 
-	public void setMember_role(int member_role) {
+	public void setMember_role(String member_role) {
 		this.member_role = member_role;
 	}
 
@@ -57,7 +55,11 @@ public class MemberVO {
 		this.dept_no = dept_no;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberVO [member_id=" + member_id + ", member_pwd=" + member_pwd + ", member_name=" + member_name
+				+ ", member_role=" + member_role + ", dept_no=" + dept_no + "]";
+	}
 	
-	
-	
+	 
 }
