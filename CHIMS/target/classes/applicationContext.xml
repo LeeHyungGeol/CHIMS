@@ -10,6 +10,9 @@
 
 
 	<!-- DataSource Configuration -->
+	<context:property-placeholder location="classpath:config/database.properties"/>
+
+	<!-- DataSource Configuration -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
@@ -19,7 +22,15 @@
 	</bean>
 
 
-
+	<!-- Spring + mybatis Way 2 : SqlSessionFactoryBean Registration -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="configLocation" value="classpath:sql-map-config.xml" />
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>
 
 
 
