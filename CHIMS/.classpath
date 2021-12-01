@@ -30,6 +30,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Playdata/git/CHIMS/CHIMS/src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="C:/div/ojdbc8.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
