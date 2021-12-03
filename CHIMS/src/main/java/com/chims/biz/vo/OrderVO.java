@@ -3,14 +3,16 @@ package com.chims.biz.vo;
 import java.util.Date;
 
 public class OrderVO {
+
 	private int order_no;
 	private Date order_date;
 	private Date order_confirm_date;
 	private String order_status;
 	private String order_opinion;
 	private String member_id;
-	
+
 	public OrderVO() {
+		System.out.println("===> OrderVO 媛앹껜�깮�꽦");
 	}
 
 	public int getOrder_no() {
@@ -27,14 +29,6 @@ public class OrderVO {
 
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
-	}
-
-	public Date getOrder_confirm_date() {
-		return order_confirm_date;
-	}
-
-	public void setOrder_confirm_date(Date order_confirm_date) {
-		this.order_confirm_date = order_confirm_date;
 	}
 
 	public String getOrder_status() {
@@ -67,7 +61,13 @@ public class OrderVO {
 				+ order_confirm_date + ", order_status=" + order_status + ", order_opinion=" + order_opinion
 				+ ", member_id=" + member_id + "]";
 	}
-	
-	
+
+	public Date getOrder_confirm_date() {
+		return order_confirm_date;
+	}
+
+	public void setOrder_confirm_date(Date order_confirm_date) {
+		this.order_confirm_date = order_confirm_date;
+	}
 
 }

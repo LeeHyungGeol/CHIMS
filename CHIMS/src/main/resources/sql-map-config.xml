@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- Member Alias Configuration -->
+	<typeAliases>
+		<typeAlias alias="member" type="com.chims.biz.vo.MemberVO" />
+		<typeAlias alias="product" type="com.chims.biz.vo.ProductVO" />
+		<typeAlias alias="order" type="com.chims.biz.vo.OrderVO" />
+	</typeAliases>
+	
+	<!-- Member Sql Mapper Configuration -->
+	<mappers>
+		<mapper resource="mappings/member-mapping.xml" />
+		<mapper resource="mappings/product-mapping.xml" />
+		<mapper resource="mappings/order-mapping.xml" />
+	</mappers>
+		
+	
+</configuration>

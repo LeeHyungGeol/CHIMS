@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OrderDAO">
+	<select id="getOrderList" parameterType="order" resultType="order">
+		SELECT *
+		FROM orders
+		ORDER BY order_no
+	</select>
+	
+	<select id="getConfirmList" parameterType="order" resultType="order">
+		SELECT *
+		FROM orders
+		ORDER BY order_no
+	</select>
+	
+	<select id="getMemberOrderList" parameterType="member" resultType="order">
+		SELECT O.ORDER_NO, O.ORDER_DATE, O.ORDER_STATUS 
+		FROM ORDERS O, MEMBER M, DEPT D
+		WHERE O.MEMBER_ID = M.MEMBER_ID AND M.DEPT_NO = D.DEPT_NO AND M.MEMBER_ID = #{member_id}		
+	</select>
+	
+</mapper>

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-
-
+	
 	<context:component-scan base-package="com.chims.biz"></context:component-scan>
-
-
+	
 	<!-- DataSource Configuration -->
 	<context:property-placeholder location="classpath:config/database.properties"/>
-
-	<!-- DataSource Configuration -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"></property>
-		<property name="username" value="chims"></property>
-		<property name="password" value="chims"></property>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property value="${jdbc.driver}" name="driverClassName"/>
+		<property value="${jdbc.url}" name="url"/>
+		<property value="${jdbc.username}" name="username"/>
+		<property value="${jdbc.password}" name="password"/>
 	</bean>
-
-
+	
+	<!-- Spring JdbcTemplate Configuration  -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 	<!-- Spring + mybatis Way 2 : SqlSessionFactoryBean Registration -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean" >
 		<property name="configLocation" value="classpath:sql-map-config.xml" />
@@ -31,7 +31,5 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>
-
-
-
+	
 </beans>

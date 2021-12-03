@@ -1,3 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mappings.member-mapping"></mapper>
+
+<mapper namespace="MemberDAO">
+
+	<insert id="insertMember" parameterType="member">
+		<![CDATA[
+			INSERT INTO member(member_id,member_pwd,member_name,dept_no) VALUES(#{member_id},#{member_pwd},#{member_name},#{dept_no})
+		]]>
+	</insert>
+
+	<update id="updateMember" parameterType="member">
+		UPDATE MEMBER
+		<set>
+			<if test="member_role == 'admin'">MEMBER_PWD = #{member_pwd}, MEMBER_NAME = #{member_name},</if>
+			<if test="member_role == 'member'">MEMBER_PWD = #{member_pwd},</if>
+		</set>
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+
+	<select id="getMember" resultType="member">
+		<![CDATA[
+			SELECT *
+			FROM member 
+			WHERE member_id = #{member_id}
+		]]>
+	</select>
+
+	<select id="getMemberList" resultType="member">
+		<![CDATA[
+			SELECT *
+			FROM member
+			ORDER BY member_name
+		]]>
+	</select>
+
+
+
+
+</mapper>

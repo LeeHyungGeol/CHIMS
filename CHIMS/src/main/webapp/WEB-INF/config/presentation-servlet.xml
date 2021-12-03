@@ -6,8 +6,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
-	<!-- component scan -->
 	<context:component-scan base-package="com.chims.view"></context:component-scan>
 
-	<!-- <mvc:annotation-driven></mvc:annotation-driven> -->
+	<!-- Data Convertter Registration : HttpMessageConvertter -->
+	<mvc:annotation-driven />
+
+	<!-- LocaleResolver Registration -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+
+	<!-- LocaleChangeInterceptor Registration -->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang"></property>
+		</bean>
+	</mvc:interceptors>
 </beans>
