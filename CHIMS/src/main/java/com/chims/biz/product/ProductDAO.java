@@ -21,7 +21,7 @@ public class ProductDAO {
 	}
 	
 	public void insertProduct(ProductVO vo){
-		System.out.println("===> Mybatis濡� insertProduct() 湲곕뒫 泥섎━");
+		System.out.println("===> Mybatis insertProduct : " + vo);
 		mybatis.insert("ProductDAO.insertProduct", vo);
 	}
 	

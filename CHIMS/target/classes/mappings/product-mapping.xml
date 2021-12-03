@@ -5,7 +5,7 @@
 	
 	<insert id="insertProduct" parameterType="product">
 		<![CDATA[
-		INSERT INTO PRODUCT (PRODUCT_CODE,PRODUCT_CATEGORY,PRODUCT_NAME,PRODUCT_CNT,PRODUCT_ETX) 
+		INSERT INTO PRODUCT (PRODUCT_CODE,PRODUCT_CATEGORY,PRODUCT_NAME,PRODUCT_CNT,PRODUCT_ETC) 
 		VALUES (#{product_code},#{product_category},#{product_name},#{product_cnt},#{product_etc})
 		]]>
 	</insert>
@@ -16,8 +16,9 @@
 			PRODUCT_CODE=#{product_code},
 			PRODUCT_CATEGORY=#{product_category},
 			PRODUCT_NAME=#{product_name},
-			PRODUCT_NAME=#{product_cnt},
-			PRODUCT_ETC=#{product_etc};
+			PRODUCT_CNT=#{product_cnt},
+			PRODUCT_ETC=#{product_etc}
+		WHERE PRODUCT_CODE = #{product_code}
 		]]>
 	</update>
 	
