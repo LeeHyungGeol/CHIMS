@@ -1,3 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mappings.member-mapping"></mapper>
+
+<mapper namespace="ProductDAO">
+	
+	<insert id="insertProduct" parameterType="product">
+		<![CDATA[
+		INSERT INTO PRODUCT (PRODUCT_CODE,PRODUCT_CATEGORY,PRODUCT_NAME,PRODUCT_CNT,PRODUCT_ETX) 
+		VALUES (#{product_code},#{product_category},#{product_name},#{product_cnt},#{product_etc})
+		]]>
+	</insert>
+	
+	<update id="updateProduct">
+		<![CDATA[
+		UPDATE PRODUCT SET 
+			PRODUCT_CODE=#{product_code},
+			PRODUCT_CATEGORY=#{product_category},
+			PRODUCT_NAME=#{product_name},
+			PRODUCT_NAME=#{product_cnt},
+			PRODUCT_ETC=#{product_etc};
+		]]>
+	</update>
+	
+	<delete id="deleteProduct" parameterType="product">
+		<![CDATA[
+			DELETE PRODUCT 
+			WHERE PRODUCT_CODE = #{product_code}
+		]]>
+	</delete>
+	
+	<select id="getProduct" parameterType="product" resultType="product">
+		<![CDATA[
+			SELECT *
+			FROM PRODUCT 
+			WHERE PRODUCT_CODE = #{product_code}
+		]]>
+	</select>
+
+	<select id="getAdminProductList" parameterType="member" resultType="product">
+		SELECT *
+		FROM PRODUCT
+		ORDER BY PRODUCT_CODE DESC
+	</select>
+	
+	<select id="getMemberProductList" parameterType="member" resultType="product">
+		SELECT p.product_code,p.product_category,p.product_name,dp.dept_product_cnt product_cnt,p.product_etc from dept_product dp , product p where dp.product_code = p.product_code and dp.dept_no=(select dept_no from member where member_id=#{member_id})
+	</select>
+	
+<!-- select tags Add, BoardDAOMybatis in if()
+	
+	<select id="getBoardList" resultMap="boardResult">
+		<![CDATA[
+			SELECT *
+			FROM BOARD 
+			WHERE TITLE LIKE '%'||#{searchKeyword}||'%'
+			ORDER BY SEQ DESC
+		]]>
+	</select>
+	
+	
+	<select id="getBoardList_T" resultMap="boardResult">
+		<![CDATA[
+			SELECT *
+			FROM BOARD
+			WHERE TITLE LIKE '%'||#{searchKeyword}||'%'
+			ORDER BY SEQ DESC
+		]]>
+	</select>
+	
+	
+	<select id="getBoardList_C" resultMap="boardResult">
+		<![CDATA[
+			SELECT *
+			FROM BOARD
+			WHERE CONTENT LIKE '%'||#{searchKeyword}||'%'
+			ORDER BY SEQ DESC
+		]]>
+	</select>
+ -->	
+</mapper>
