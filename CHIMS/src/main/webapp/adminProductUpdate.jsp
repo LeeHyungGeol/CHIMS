@@ -125,41 +125,49 @@
 
 		<div class="main" align="center">
 			<div class="container">
-				<form class="form-horizontal" action="adminMemberUpdate.do"
+				<form class="form-horizontal" action="adminProductUpdate.do"
 					method="post" role="form">
 					<h4>물품 수정</h4>
 					<div class="form-group">
-						<label for="firstName" class="col-sm-3 control-label">물품아이디</label>
+						<label for="firstName" class="col-sm-3 control-label">물품코드</label>
 						<div class="col-sm-9">
-							<input type="text" id="firstName" placeholder="ID"
-								class="form-control" name="product_id" autofocus>
+							<input type="text" id="firstName"
+								class="form-control" name="product_code" value="${product.product_code}" autofocus>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">물품명</label>
+						<div class="col-sm-9">
+							<input type="text" placeholder="" value="${product.product_name}" class="form-control"
+								name="product_name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label">분류</label>
 						<div class="col-sm-9">
-							<input type="password" id="lastName" placeholder="password"
+							<input type="text" id="lastName" placeholder="" value="${product.product_category}"
 								class="form-control" name="product_category" autofocus>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">이름</label>
-						<div class="col-sm-9">
-							<input type="text" placeholder="" class="form-control"
-								name="product_name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label">수량</label>
 						<div class="col-sm-9">
-							<input type="text" placeholder="" class="form-control"
+							<input type="text" placeholder="" class="form-control" value="${product.product_cnt}"
 								name="product_cnt">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">etc</label>
+						<div class="col-sm-9">
+							<input type="text" placeholder="" class="form-control" value="${product.product_etc}"
+								name="product_etc">
 						</div>
 					</div>
 
 					<button type="submit" class="btn btn-primary ">수정</button> &nbsp;&nbsp;
-					<a href="adminProductDelete.do"><button class="btn btn-primary ">삭제</button></a>
 				</form>
+				<br/>
+				<a href="adminProductDelete.do?product_code=${product.product_code}"><button class="btn btn-primary ">삭제</button></a>
 				<!-- /form -->
 			</div>
 			<!-- ./container -->

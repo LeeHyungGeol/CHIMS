@@ -125,25 +125,25 @@
 
 		<div class="main" align="center">
 			<div class="container">
-				<form class="form-horizontal" action="adminMemberInsert.do"
+				<form class="form-horizontal" action="adminProductInsert.do"
 					method="post" role="form">
 					<h4>물품 추가</h4>
 					<div class="form-group">
-						<label for="firstName" class="col-sm-3 control-label">물품아이디</label>
+						<label for="firstName" class="col-sm-3 control-label">물품코드</label>
 						<div class="col-sm-9">
-							<input type="text" id="firstName" placeholder="ID"
-								class="form-control" name="product_id" autofocus>
+							<input type="text" id="firstName" placeholder=""
+								class="form-control" name="product_code" autofocus>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label">분류</label>
 						<div class="col-sm-9">
-							<input type="password" id="lastName" placeholder="password"
+							<input type="text" id="lastName" placeholder=""
 								class="form-control" name="product_category" autofocus>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-3 control-label">이름</label>
+						<label class="col-sm-3 control-label">물품명</label>
 						<div class="col-sm-9">
 							<input type="text" placeholder="" class="form-control"
 								name="product_name">
@@ -154,6 +154,13 @@
 						<div class="col-sm-9">
 							<input type="text" placeholder="" class="form-control"
 								name="product_cnt">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">etc</label>
+						<div class="col-sm-9">
+							<input type="text" placeholder="" class="form-control"
+								name="product_etc">
 						</div>
 					</div>
 
