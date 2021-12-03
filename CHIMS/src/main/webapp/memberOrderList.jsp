@@ -169,7 +169,7 @@
 								<tbody>
 									<c:forEach items="${memberOrderList}" var="order">
 										<tr>
-											<td>${order.order_no}</td>
+											<td><a href="memberOrderDetail.do?order_no=${order.order_no}">${order.order_no}</a></td>
 											<td>${order.order_date}</td>
 											<td>${order.order_status}</td>
 										</tr>

@@ -7,17 +7,31 @@
 		FROM orders
 		ORDER BY order_no
 	</select>
-	
+
 	<select id="getConfirmList" parameterType="order" resultType="order">
 		SELECT *
 		FROM orders
 		ORDER BY order_no
 	</select>
-	
-	<select id="getMemberOrderList" parameterType="member" resultType="order">
-		SELECT O.ORDER_NO, O.ORDER_DATE, O.ORDER_STATUS 
-		FROM ORDERS O, MEMBER M, DEPT D
-		WHERE O.MEMBER_ID = M.MEMBER_ID AND M.DEPT_NO = D.DEPT_NO AND M.MEMBER_ID = #{member_id}		
+
+	<select id="getMemberOrderList" parameterType="member"
+		resultType="order">
+		SELECT O.ORDER_NO, O.ORDER_DATE, O.ORDER_STATUS
+		FROM ORDERS
+		O, MEMBER M, DEPT D
+		WHERE O.MEMBER_ID = M.MEMBER_ID AND
+		M.DEPT_NO =
+		D.DEPT_NO AND M.MEMBER_ID = #{member_id}
 	</select>
-	
+
+	<select id="getOrderDetail" parameterType="order" resultType="orderDetail">
+		select o.order_no order_no, o.order_date order_date, p.product_code
+		product_code, p.product_name product_name,m.dept_no
+		dept_no,op.order_product_cnt order_product_cnt,m.member_id
+		order_member_id,m.member_name order_member_name from orders o ,
+		order_product op , member m, product p where o.order_no = op.order_no
+		and o.member_id = m.member_id and op.product_code = p.product_code and
+		o.order_no=#{order_no}
+	</select>
+
 </mapper>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chims.biz.vo.MemberVO;
+import com.chims.biz.vo.OrderDetailVO;
 import com.chims.biz.vo.OrderVO;
 
 @Service("orderService")
@@ -15,22 +16,28 @@ public class OrderServiceImpl {
 	private OrderDAO orderDAO;
 
 	public OrderServiceImpl() {
-		System.out.println("===> OrderService Â™õÏïπÍªú ÔøΩÍπÆÔøΩÍΩ¶");
+		System.out.println("===> OrderService ∞¥√º ª˝º∫");
 	}
 
 	public List<OrderVO> getOrderList(OrderVO orderVO) {
-		System.out.println("===> orderService getOrderList ÔøΩÏÉáÁï∞ÔøΩ");
+		System.out.println("===> orderService getOrderList »£√‚");
 		return orderDAO.getOrderList(orderVO);
 	}
 
 	public List<OrderVO> getConfirmList(OrderVO orderVO) {
-		System.out.println("===> orderService getConfirmList ÔøΩÏÉáÁï∞ÔøΩ");
+		System.out.println("===> orderService getConfirmList »£√‚");
 		return orderDAO.getConfirmList(orderVO);
 	}
 
 	public List<OrderVO> getMemberOrderList(MemberVO memberVO) {
-		System.out.println("==> orderServic getMemberOrderList ÔøΩÏÉáÁï∞ÔøΩ");
+		System.out.println("==> orderService getMemberOrderList »£√‚");
 		return orderDAO.getMemberOrderList(memberVO);
+	}
+
+	public List<OrderDetailVO> getOrderDetail(OrderVO orderVO) {
+		System.out.println("==> orderService getOrderDetail »£√‚");
+		return orderDAO.getOrderDetail(orderVO);
+
 	}
 
 }

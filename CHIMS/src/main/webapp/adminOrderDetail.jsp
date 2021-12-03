@@ -82,10 +82,6 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"><span>${member_name}</span> <i
 								class="icon-submenu lnr lnr-chevron-down"></i></a>
-							<ul class="dropdown-menu">
-								<li><a href="memberMypage"><i class="lnr lnr-user"></i> <span>My
-											Page</span></a></li>
-							</ul></li>
 					</ul>
 				</div>
 			</div>
@@ -96,22 +92,34 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="#subPages" data-toggle="collapse" class="collapsed">
+												<li><a href="#subPages" data-toggle="collapse" class="collapsed">
 								<i class="lnr lnr-file-empty"></i> <span>물품관리</span>
 								<i class="icon-submenu lnr lnr-chevron-left"></i>
 							</a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="memberMain.do" class="">물품리스트</a></li>
-									<li><a href="memberProductInsert.do" class="">물품추가</a></li>
+									<li><a href="adminMain.do" class="">물품리스트</a></li>
+									<li><a href="adminProductInsert.do" class="">물품추가</a></li>
 								</ul>
 							</div>
 						</li>
-						<li><a href="memberOrder.jsp" class=""><i
-								class="lnr lnr-code"></i> <span>물품청구</span></a></li>
-						<li><a href="memberOrderList.do" class=""><i
-								class="lnr lnr-chart-bars"></i> <span>청구리스트</span></a>
+						<li><a href="adminOrderList.do" class=""><i
+								class="lnr lnr-code"></i> <span>청구리스트</span></a></li>
+						<li><a href="adminConfirmList.do" class=""><i
+								class="lnr lnr-chart-bars"></i> <span>발주리스트</span></a></li>
+
+						<li><a href="#subPages1" data-toggle="collapse" class="collapsed">
+								<i class="lnr lnr-file-empty"></i> <span>회원관리</span>
+								<i class="icon-submenu lnr lnr-chevron-left"></i>
+							</a>
+							<div id="subPages1" class="collapse ">
+								<ul class="nav">
+									<li><a href="adminMemberList.do" class="">회원리스트</a></li>
+									<li><a href="adminMemberInsert.do" class="">회원추가</a></li>
+								</ul>
+							</div>
 						</li>
+						
 					</ul>
 				</nav>
 			</div>
@@ -122,7 +130,7 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">청구 상세리스트</h3>
+					<h3 class="page-title">청구 상세 페이지</h3>
 					<!-- BORDERED TABLE -->
 					<div class="panel">
 						<form class="navbar-form navbar-left">
@@ -169,10 +177,11 @@
 										<th>부서</th>
 										<th>청구인아이디</th>
 										<th>청구인</th>
+										
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${memberOrderDetail}" var="order">
+									<c:forEach items="${adminOrderDetail}" var="order">
 										<tr>
 											<td>${order.order_no}</td>
 											<td>${order.order_date}</td>
@@ -182,6 +191,7 @@
 											<td>${order.dept_no}</td>
 											<td>${order.order_member_id}</td>
 											<td>${order.order_member_name}</td>
+											
 										</tr>
 									</c:forEach>
 
